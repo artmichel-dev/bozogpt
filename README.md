@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ignorancia Artificial – BozoGPT
 
-## Getting Started
+> "The first AI trained with public education and Mexican TV."
 
-First, run the development server:
+A humorous, sarcastic, and absurd chatbot built with Next.js (App Router), TailwindCSS, and OpenAI API. BozoGPT always answers with creative, funny, or nonsensical responses whose only purpose is to say "I don't know"—never anything useful or true. Inspired by the ChatGPT UI, but with a comic twist.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🚀 Features
+
+- **Always Absurd**: Never gives useful or true answers—only creative, funny, or sarcastic "I don't know" responses.
+- **ChatGPT-like UI**: Minimal, dark mode, responsive, and mobile-friendly.
+- **Multilingual**: Detects user language and responds accordingly.
+- **No login, no persistence**: All chat is local and resets on reload.
+- **OpenAI API Proxy**: Secure backend proxy, API key never exposed to frontend.
+- **Branding**: Custom header, icons, and footer with credits and social links.
+
+---
+
+## 📸 Screenshots
+
+![BozoGPT Screenshot](./screenshot.png)
+
+---
+
+## 🛠️ Tech Stack
+
+- [Next.js 15 (App Router)](https://nextjs.org/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [OpenAI API](https://platform.openai.com/docs/api-reference)
+- TypeScript
+
+---
+
+## 📦 Project Structure
+
+```
+/ (root)
+├── src/
+│   ├── app/
+│   │   ├── page.tsx         # Main chat UI
+│   │   ├── layout.tsx       # App layout (header, footer)
+│   │   ├── globals.css      # Tailwind & global styles
+│   │   └── api/
+│   │       └── chat/route.ts # API proxy to OpenAI
+│   └── components/
+│       └── ChatMessage.tsx  # Chat message component
+├── tailwind.config.js
+├── postcss.config.js
+├── .env.local               # Your OpenAI API key (not committed)
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚡ Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Clone the repo
+```bash
+git clone https://github.com/YOUR-USERNAME/ignorancia-artificial.git
+cd ignorancia-artificial
+```
 
-## Learn More
+### 2. Install dependencies
+```bash
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Set up your OpenAI API key
+Create a file called `.env.local` in the root folder:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+OPENAI_API_KEY=sk-...
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+> **Never share or commit your API key!**
 
-## Deploy on Vercel
+### 4. Run the development server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 5. Build for production
+```bash
+npm run build
+npm start
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🔐 Environment Variables
+
+- `OPENAI_API_KEY` – Your OpenAI API key (required, never exposed to frontend)
+
+---
+
+## 🧠 How it works
+- The frontend detects the user's language and sends it to the backend.
+- The backend (`/api/chat`) acts as a secure proxy to OpenAI, injecting a system prompt that forces absurd, comic, and "I don't know" answers in the user's language.
+- The frontend UI is inspired by ChatGPT, but with a comic, minimal, and dark look.
+
+---
+
+## ✨ Credits
+
+- **Developed by:** [Art Michel](https://www.artmichel.com/)
+- **GitHub:** [@artmichel-dev](https://github.com/artmichel-dev)
+- **X (Twitter):** [@artmichel_eth](https://x.com/artmichel_eth)
+- **Instagram:** [@artmichel](https://instagram.com/artmichel)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+---
+
+## 🤡 Example answers
+
+- “Hmm… I have absolutely no idea, but it sounds complicated.”
+- “I was trained on soap operas and memes, so I have no clue.”
+- “Let me check with my ignorance… nope, still don’t know.”
+- “My answer is yes, but also no. In summary: I don’t know.”
+
+---
+
+## 📝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
