@@ -61,16 +61,15 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col items-center justify-between w-full max-w-2xl sm:rounded-xl mx-auto h-[80vh] bg-zinc-900 shadow-lg border border-zinc-800 overflow-hidden min-h-[80vh] rounded-none">
+    <main className="flex flex-col items-center justify-between w-full max-w-2xl mx-auto h-[75vh] sm:h-[80vh] bg-zinc-900 shadow-lg border border-zinc-800 overflow-hidden min-h-[75vh] sm:min-h-[80vh] rounded-none sm:rounded-xl px-2 sm:px-0">
       <div
         ref={chatRef}
-        className="flex-1 w-full overflow-y-auto px-2 sm:px-4 py-4 sm:py-6 space-y-4"
-        style={{ maxHeight: "calc(80vh - 70px)" }}
+        className="flex-1 w-full overflow-y-auto px-2 sm:px-4 py-3 sm:py-6 space-y-3 sm:space-y-4"
+        style={{ maxHeight: "calc(75vh - 60px)" }}
       >
         {messages.length === 0 && (
-          <div className="text-center text-zinc-500 mt-10 select-none">
-            {/* <span className="text-4xl">🤡</span> */}
-            <div className="mt-2">¡Hazle una pregunta absurda a BozoGPT!</div>
+          <div className="text-center text-zinc-500 mt-8 sm:mt-10 select-none px-4">
+            <div className="text-sm sm:text-base">¡Hazle una pregunta absurda a BozoGPT!</div>
           </div>
         )}
         {messages.map((msg, i) => (
@@ -78,14 +77,14 @@ export default function Home() {
         ))}
         {loading && (
           <div className="flex justify-start">
-            <div className="rounded-lg px-4 py-2 max-w-[80%] bg-zinc-800 text-bozo-accent border border-bozo/30 animate-pulse">
+            <div className="rounded-lg px-3 sm:px-4 py-2 max-w-[85%] sm:max-w-[80%] bg-zinc-800 text-bozo-accent border border-bozo/30 animate-pulse">
               <span className="block text-xs mb-1 opacity-70">BozoGPT</span>
-              Pensando en una tontería...
+              <span className="text-sm sm:text-base">Pensando en una tontería...</span>
             </div>
           </div>
         )}
         {error && (
-          <div className="text-center text-red-400 mt-2">{error}</div>
+          <div className="text-center text-red-400 mt-2 text-sm sm:text-base px-4">{error}</div>
         )}
       </div>
       <form
@@ -97,7 +96,7 @@ export default function Home() {
       >
         <input
           type="text"
-          className="flex-1 rounded-lg px-2 sm:px-4 py-2 bg-zinc-800 text-zinc-100 focus:outline-none focus:ring-2 focus:ring-bozo placeholder-zinc-500 text-sm sm:text-base"
+          className="flex-1 rounded-lg px-3 sm:px-4 py-2 bg-zinc-800 text-zinc-100 focus:outline-none focus:ring-2 focus:ring-bozo placeholder-zinc-500 text-sm sm:text-base"
           placeholder="Escribe tu duda... aunque no sabré la respuesta 🤷‍♂️"
           value={input}
           onChange={(e) => setInput(e.target.value)}
@@ -107,7 +106,7 @@ export default function Home() {
         />
         <button
           type="submit"
-          className="bg-zinc-700 hover:bg-zinc-600 text-white font-bold py-2 px-3 sm:px-4 rounded-lg transition-colors disabled:opacity-60 text-sm sm:text-base"
+          className="bg-zinc-700 hover:bg-zinc-600 text-white font-bold py-2 px-3 sm:px-4 rounded-lg transition-colors disabled:opacity-60 text-sm sm:text-base whitespace-nowrap"
           disabled={loading || !input.trim()}
         >
           {loading ? "🤡..." : "Enviar"}
