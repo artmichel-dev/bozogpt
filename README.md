@@ -132,4 +132,4 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 
 ---
 
-⭐ **¡No olvides dar una estrella si este proyecto te fue útil!** ⭐
+⭐ **Don't forget to give a star if you found this project helpful!** ⭐
