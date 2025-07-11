@@ -61,11 +61,10 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col items-center justify-between w-full max-w-2xl mx-auto h-[75vh] sm:h-[80vh] bg-zinc-900 shadow-lg border border-zinc-800 overflow-hidden min-h-[75vh] sm:min-h-[80vh] rounded-none sm:rounded-xl px-2 sm:px-0">
+    <main className="flex flex-col items-center justify-between w-full max-w-2xl mx-auto bg-zinc-900 shadow-lg border border-zinc-800 overflow-hidden rounded-none sm:rounded-xl px-2 sm:px-0">
       <div
         ref={chatRef}
-        className="flex-1 w-full overflow-y-auto px-2 sm:px-4 py-3 sm:py-6 space-y-3 sm:space-y-4"
-        style={{ maxHeight: "calc(75vh - 60px)" }}
+        className="w-full overflow-y-auto px-2 sm:px-4 py-3 sm:py-6 space-y-3 sm:space-y-4 min-h-[200px] max-h-[60vh]"
       >
         {messages.length === 0 && (
           <div className="text-center text-zinc-500 mt-8 sm:mt-10 select-none px-4">

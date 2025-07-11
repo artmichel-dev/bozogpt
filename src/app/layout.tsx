@@ -25,9 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
-        <header className="w-full border-b border-zinc-800 py-6 mb-2 flex flex-col items-center bg-zinc-950/80 sticky top-0 z-10 shadow-lg">
+        <header className="w-full border-b border-zinc-800 py-6 mb-2 flex flex-col items-center bg-zinc-950/80 z-10 shadow-lg">
           <div className="flex items-center gap-3">
             <span className="text-2xl sm:text-3xl">🤖</span>
             <span className="text-2xl sm:text-3xl font-extrabold bozo-accent select-none">Ignorancia Artificial</span>
@@ -36,8 +36,10 @@ export default function RootLayout({
             BozoGPT es una Ignorancia Artificial, la primera IA entrenada con educación pública y televisión mexicana. 📺
           </span>
         </header>
-        {children}
-        <footer className="w-full flex flex-col items-center gap-2 py-4 border-t border-zinc-800 bg-zinc-950/80 mt-4 text-zinc-400 text-xs sm:text-sm px-4">
+        <main className="flex-1 flex items-center justify-center px-4 py-4">
+          {children}
+        </main>
+        <footer className="w-full flex flex-col items-center gap-2 py-4 border-t border-zinc-800 bg-zinc-950/80 text-zinc-400 text-xs sm:text-sm px-4 mt-auto">
           <div className="text-center">
             Desarrollado por: <a href="https://www.artmichel.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-zinc-200">Art Michel</a>
           </div>
