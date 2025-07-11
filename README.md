@@ -117,15 +117,19 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
 
 ---
 
-## 🤡 Example answers
+## �� Example answers
 
-- “Hmm… I have absolutely no idea, but it sounds complicated.”
-- “I was trained on soap operas and memes, so I have no clue.”
-- “Let me check with my ignorance… nope, still don’t know.”
-- “My answer is yes, but also no. In summary: I don’t know.”
+- "Hmm… I have absolutely no idea, but it sounds complicated."
+- "I was trained on soap operas and memes, so I have no clue."
+- "Let me check with my ignorance… nope, still don't know."
+- "My answer is yes, but also no. In summary: I don't know."
 
 ---
 
 ## 📝 Contributing
 
 Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
+⭐ **¡No olvides dar una estrella si este proyecto te fue útil!** ⭐
