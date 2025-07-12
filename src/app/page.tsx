@@ -21,7 +21,9 @@ export default function Home() {
 
   useEffect(() => {
     if (chatRef.current) {
-      chatRef.current.scrollTop = chatRef.current.scrollHeight;
+      setTimeout(() => {
+        chatRef.current!.scrollTop = chatRef.current!.scrollHeight;
+      }, 50);
     }
   }, [messages]);
 
@@ -60,12 +62,39 @@ export default function Home() {
     }
   };
 
+  // Scroll to bottom when keyboard appears on mobile
+  useEffect(() => {
+    const handleResize = () => {
+      if (chatRef.current) {
+        setTimeout(() => {
+          chatRef.current!.scrollTop = chatRef.current!.scrollHeight;
+        }, 100);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Centrar input al enfocarse en móvil
+  useEffect(() => {
+    const input = document.querySelector('input[type="text"]');
+    if (!input) return;
+    const handler = () => {
+      setTimeout(() => {
+        input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 200);
+    };
+    input.addEventListener('focus', handler);
+    return () => input.removeEventListener('focus', handler);
+  }, []);
+
   const isEmpty = messages.length === 0;
   return (
-    <div className="flex flex-col items-center flex-1 w-full min-h-0">
+    <div className="flex flex-col items-center flex-1 w-full min-h-0 h-full">
       {isEmpty ? (
         <form
-          className="flex flex-col items-center justify-center w-full max-w-xl mx-auto flex-1"
+          className="flex flex-col items-center justify-center w-full max-w-xl mx-auto flex-1 px-4"
           onSubmit={(e) => {
             e.preventDefault();
             sendMessage();
@@ -99,10 +128,10 @@ export default function Home() {
           </div>
         </form>
       ) : (
-        <main className="flex flex-col items-center w-full max-w-2xl mx-auto bg-transparent px-0 py-0 flex-1 min-h-0">
+        <main className="flex flex-col items-center w-full max-w-2xl mx-auto bg-transparent px-0 py-0 flex-1 min-h-0 h-full">
           <div
             ref={chatRef}
-            className="w-full flex-1 overflow-y-auto px-2 sm:px-6 py-6 space-y-4 min-h-[120px] max-h-[60vh] flex flex-col justify-end"
+            className="w-full flex-1 min-h-0 overflow-y-auto px-2 sm:px-6 py-4 space-y-4 flex flex-col justify-end"
           >
             {messages.map((msg, i) => (
               <ChatMessage key={i} role={msg.role} content={msg.content} />
@@ -120,7 +149,7 @@ export default function Home() {
             )}
           </div>
           <form
-            className="w-full flex justify-center items-center gap-0 p-4 bg-transparent"
+            className="w-full flex justify-center items-center gap-0 p-4 bg-transparent flex-shrink-0"
             onSubmit={(e) => {
               e.preventDefault();
               sendMessage();

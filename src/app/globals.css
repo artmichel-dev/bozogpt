@@ -20,3 +20,26 @@ body {
 .bozo-accent {
   color: #6b7280;
 }
+
+/* Mobile viewport fixes */
+@supports (-webkit-touch-callout: none) {
+  /* iOS Safari */
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Prevent zoom on input focus on mobile */
+@media screen and (max-width: 768px) {
+  input[type="text"] {
+    font-size: 16px;
+  }
+}
+
+/* Mobile keyboard handling */
+@media screen and (max-width: 768px) {
+  body {
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height */
+  }
+}
