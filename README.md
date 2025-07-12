@@ -23,6 +23,12 @@ A humorous, sarcastic, and absurd chatbot built with Next.js (App Router), Tailw
 
 ---
 
+## 🌐 Live Preview
+
+Puedes probar BozoGPT en: [https://www.bozogpt.com/](https://www.bozogpt.com/)
+
+---
+
 ## 🛠️ Tech Stack
 
 - [Next.js 15 (App Router)](https://nextjs.org/)
