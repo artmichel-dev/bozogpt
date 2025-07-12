@@ -60,57 +60,92 @@ export default function Home() {
     }
   };
 
+  const isEmpty = messages.length === 0;
   return (
-    <main className="flex flex-col items-center justify-between w-full max-w-2xl mx-auto bg-zinc-900 shadow-lg border border-zinc-800 overflow-hidden rounded-none sm:rounded-xl px-2 sm:px-0">
-      <div
-        ref={chatRef}
-        className="w-full overflow-y-auto px-2 sm:px-4 py-3 sm:py-6 space-y-3 sm:space-y-4 min-h-[200px] max-h-[60vh]"
-      >
-        {messages.length === 0 && (
-          <div className="text-center text-zinc-500 mt-8 sm:mt-10 select-none px-4">
-            <div className="text-sm sm:text-base">¡Hazle una pregunta absurda a BozoGPT!</div>
-          </div>
-        )}
-        {messages.map((msg, i) => (
-          <ChatMessage key={i} role={msg.role} content={msg.content} />
-        ))}
-        {loading && (
-          <div className="flex justify-start">
-            <div className="rounded-lg px-3 sm:px-4 py-2 max-w-[85%] sm:max-w-[80%] bg-zinc-800 text-bozo-accent border border-bozo/30 animate-pulse">
-              <span className="block text-xs mb-1 opacity-70">BozoGPT</span>
-              <span className="text-sm sm:text-base">Pensando en una tontería...</span>
-            </div>
-          </div>
-        )}
-        {error && (
-          <div className="text-center text-red-400 mt-2 text-sm sm:text-base px-4">{error}</div>
-        )}
-      </div>
-      <form
-        className="w-full flex items-center gap-2 p-2 sm:p-4 border-t border-zinc-800 bg-zinc-950"
-        onSubmit={(e) => {
-          e.preventDefault();
-          sendMessage();
-        }}
-      >
-        <input
-          type="text"
-          className="flex-1 rounded-lg px-3 sm:px-4 py-2 bg-zinc-800 text-zinc-100 focus:outline-none focus:ring-2 focus:ring-bozo placeholder-zinc-500 text-sm sm:text-base"
-          placeholder="Escribe tu duda... aunque no sabré la respuesta 🤷‍♂️"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          disabled={loading}
-          autoFocus
-        />
-        <button
-          type="submit"
-          className="bg-zinc-700 hover:bg-zinc-600 text-white font-bold py-2 px-3 sm:px-4 rounded-lg transition-colors disabled:opacity-60 text-sm sm:text-base whitespace-nowrap"
-          disabled={loading || !input.trim()}
+    <div className="flex flex-col items-center flex-1 w-full min-h-0">
+      {isEmpty ? (
+        <form
+          className="flex flex-col items-center justify-center w-full max-w-xl mx-auto flex-1"
+          onSubmit={(e) => {
+            e.preventDefault();
+            sendMessage();
+          }}
         >
-          {loading ? "🤡..." : "Enviar"}
-        </button>
-      </form>
-    </main>
+          <span className="text-2xl sm:text-3xl font-bold text-center mb-6 text-zinc-100 select-none">¿En qué piensas hoy?</span>
+          <div className="flex w-full items-center bg-zinc-800 rounded-3xl">
+            <input
+              type="text"
+              className="flex-1 rounded-3xl px-5 py-3 bg-transparent text-zinc-100 focus:outline-none placeholder-zinc-400 text-base sm:text-lg border-none shadow-none"
+              placeholder="Escribe tu duda... aunque no sabré la respuesta 🤷‍♂️"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              disabled={loading}
+              autoFocus
+            />
+            <button
+              type="submit"
+              className="flex items-center justify-center bg-transparent text-zinc-400 hover:text-zinc-100 font-bold py-0 px-4 rounded-3xl transition-colors disabled:opacity-60 text-base sm:text-lg border-none shadow-none"
+              disabled={loading || !input.trim()}
+            >
+              {loading ? "🤡..." : (
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.12 1.152.488V8.25c4.5 0 8.25 1.5 10.5 4.5-2.25 3-6 4.5-10.5 4.5v4.217c0 .609-.713.928-1.152.489L2.25 12z" /></svg>
+              )}
+            </button>
+          </div>
+        </form>
+      ) : (
+        <main className="flex flex-col items-center w-full max-w-2xl mx-auto bg-transparent px-0 py-0 flex-1 min-h-0">
+          <div
+            ref={chatRef}
+            className="w-full flex-1 overflow-y-auto px-2 sm:px-6 py-6 space-y-4 min-h-[120px] max-h-[60vh] flex flex-col justify-end"
+          >
+            {messages.map((msg, i) => (
+              <ChatMessage key={i} role={msg.role} content={msg.content} />
+            ))}
+            {loading && (
+              <div className="flex justify-start">
+                <div className="rounded-2xl px-4 py-3 max-w-[85%] sm:max-w-[80%] bg-zinc-800 text-bozo-accent animate-pulse">
+                  <span className="block text-xs mb-1 opacity-70">BozoGPT</span>
+                  <span className="text-base sm:text-lg">Pensando en una tontería...</span>
+                </div>
+              </div>
+            )}
+            {error && (
+              <div className="text-center text-red-400 mt-2 text-base sm:text-lg px-4">{error}</div>
+            )}
+          </div>
+          <form
+            className="w-full flex justify-center items-center gap-0 p-4 bg-transparent"
+            onSubmit={(e) => {
+              e.preventDefault();
+              sendMessage();
+            }}
+          >
+            <div className="flex flex-1 max-w-2xl items-center bg-zinc-800 rounded-3xl">
+              <input
+                type="text"
+                className="flex-1 rounded-3xl px-5 py-3 bg-transparent text-zinc-100 focus:outline-none placeholder-zinc-400 text-base sm:text-lg border-none shadow-none"
+                placeholder="Escribe tu duda... aunque no sabré la respuesta 🤷‍♂️"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                disabled={loading}
+                autoFocus
+              />
+              <button
+                type="submit"
+                className="flex items-center justify-center bg-transparent text-zinc-400 hover:text-zinc-100 font-bold py-0 px-4 rounded-3xl transition-colors disabled:opacity-60 text-base sm:text-lg border-none shadow-none"
+                disabled={loading || !input.trim()}
+              >
+                {loading ? "🤡..." : (
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.12 1.152.488V8.25c4.5 0 8.25 1.5 10.5 4.5-2.25 3-6 4.5-10.5 4.5v4.217c0 .609-.713.928-1.152.489L2.25 12z" /></svg>
+                )}
+              </button>
+            </div>
+          </form>
+        </main>
+      )}
+    </div>
   );
 }
