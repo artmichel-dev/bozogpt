@@ -71,25 +71,29 @@ export default function Home() {
             sendMessage();
           }}
         >
-          <span className="text-2xl sm:text-3xl font-bold text-center mb-6 text-zinc-100 select-none">¿En qué piensas hoy?</span>
-          <div className="flex w-full items-center bg-zinc-800 rounded-3xl">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-zinc-100 select-none">¿En qué piensas hoy?</h2>
+          <div className="flex w-full items-center bg-zinc-700 rounded-3xl">
             <input
               type="text"
-              className="flex-1 rounded-3xl px-5 py-3 bg-transparent text-zinc-100 focus:outline-none placeholder-zinc-400 text-base sm:text-lg border-none shadow-none"
+              className="flex-1 rounded-3xl px-5 py-3 bg-transparent text-zinc-100 focus:outline-none placeholder-zinc-300 text-base sm:text-lg border-none shadow-none"
               placeholder="Escribe tu duda... aunque no sabré la respuesta 🤷‍♂️"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               disabled={loading}
               autoFocus
+              aria-label="Escribe tu pregunta para BozoGPT"
             />
             <button
               type="submit"
-              className="flex items-center justify-center bg-transparent text-zinc-400 hover:text-zinc-100 font-bold py-0 px-4 rounded-3xl transition-colors disabled:opacity-60 text-base sm:text-lg border-none shadow-none"
+              className="flex items-center justify-center bg-transparent text-zinc-300 hover:text-zinc-100 font-bold py-0 px-4 rounded-3xl transition-colors disabled:opacity-60 text-base sm:text-lg border-none shadow-none"
               disabled={loading || !input.trim()}
+              aria-label={loading ? "Enviando mensaje..." : "Enviar mensaje"}
             >
-              {loading ? "🤡..." : (
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.12 1.152.488V8.25c4.5 0 8.25 1.5 10.5 4.5-2.25 3-6 4.5-10.5 4.5v4.217c0 .609-.713.928-1.152.489L2.25 12z" /></svg>
+              {loading ? (
+                <span role="img" aria-label="Pensando">🤡...</span>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.12 1.152.488V8.25c4.5 0 8.25 1.5 10.5 4.5-2.25 3-6 4.5-10.5 4.5v4.217c0 .609-.713.928-1.152.489L2.25 12z" /></svg>
               )}
             </button>
           </div>
@@ -105,7 +109,7 @@ export default function Home() {
             ))}
             {loading && (
               <div className="flex justify-start">
-                <div className="rounded-2xl px-4 py-3 max-w-[85%] sm:max-w-[80%] bg-zinc-800 text-bozo-accent animate-pulse">
+                <div className="rounded-2xl px-4 py-3 max-w-[85%] sm:max-w-[80%] bg-zinc-700 text-bozo-accent animate-pulse" role="status" aria-live="polite">
                   <span className="block text-xs mb-1 opacity-70">BozoGPT</span>
                   <span className="text-base sm:text-lg">Pensando en una tontería...</span>
                 </div>
@@ -122,24 +126,28 @@ export default function Home() {
               sendMessage();
             }}
           >
-            <div className="flex flex-1 max-w-2xl items-center bg-zinc-800 rounded-3xl">
+            <div className="flex flex-1 max-w-2xl items-center bg-zinc-700 rounded-3xl">
               <input
                 type="text"
-                className="flex-1 rounded-3xl px-5 py-3 bg-transparent text-zinc-100 focus:outline-none placeholder-zinc-400 text-base sm:text-lg border-none shadow-none"
+                className="flex-1 rounded-3xl px-5 py-3 bg-transparent text-zinc-100 focus:outline-none placeholder-zinc-300 text-base sm:text-lg border-none shadow-none"
                 placeholder="Escribe tu duda... aunque no sabré la respuesta 🤷‍♂️"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
                 disabled={loading}
                 autoFocus
+                aria-label="Escribe tu pregunta para BozoGPT"
               />
               <button
                 type="submit"
-                className="flex items-center justify-center bg-transparent text-zinc-400 hover:text-zinc-100 font-bold py-0 px-4 rounded-3xl transition-colors disabled:opacity-60 text-base sm:text-lg border-none shadow-none"
+                className="flex items-center justify-center bg-transparent text-zinc-300 hover:text-zinc-100 font-bold py-0 px-4 rounded-3xl transition-colors disabled:opacity-60 text-base sm:text-lg border-none shadow-none"
                 disabled={loading || !input.trim()}
+                aria-label={loading ? "Enviando mensaje..." : "Enviar mensaje"}
               >
-                {loading ? "🤡..." : (
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.12 1.152.488V8.25c4.5 0 8.25 1.5 10.5 4.5-2.25 3-6 4.5-10.5 4.5v4.217c0 .609-.713.928-1.152.489L2.25 12z" /></svg>
+                {loading ? (
+                  <span role="img" aria-label="Pensando">🤡...</span>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.12 1.152.488V8.25c4.5 0 8.25 1.5 10.5 4.5-2.25 3-6 4.5-10.5 4.5v4.217c0 .609-.713.928-1.152.489L2.25 12z" /></svg>
                 )}
               </button>
             </div>

@@ -7,8 +7,10 @@ export function ChatMessage({ role, content }: { role: "user" | "assistant"; con
         className={`rounded-3xl px-5 py-4 max-w-[90%] sm:max-w-[75%] whitespace-pre-line text-base sm:text-lg transition-all duration-200
           ${role === "user"
             ? "bg-zinc-700 text-zinc-100 font-semibold"
-            : "bg-zinc-800 text-zinc-200"}
+            : "bg-zinc-600 text-zinc-100"}
         `}
+        role="article"
+        aria-label={`Mensaje de ${role === "user" ? "usuario" : "BozoGPT"}`}
       >
         <span className="block text-xs mb-1 opacity-70">
           {role === "user" ? "Tú" : "BozoGPT"}

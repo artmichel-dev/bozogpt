@@ -76,28 +76,28 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
-        <header className="w-full border-b border-zinc-800 py-2 flex items-center bg-transparent z-10">
+        <header className="w-full border-b border-zinc-700 py-2 flex items-center bg-zinc-900/50 z-10" role="banner">
           <div className="flex items-center gap-2 w-full">
-            <span className="text-xl sm:text-2xl ml-2">🤖</span>
-            <span className="hidden sm:block flex-1 text-center text-base sm:text-lg font-bold text-white select-none truncate">Ignorancia Artificial™</span>
-            <span className="block sm:hidden text-base font-bold text-white select-none ml-2">Ignorancia Artificial™</span>
+            <span className="text-xl sm:text-2xl ml-2" role="img" aria-label="Robot icon">🤖</span>
+            <h1 className="hidden sm:block flex-1 text-center text-base sm:text-lg font-bold text-zinc-100 select-none truncate">Ignorancia Artificial™</h1>
+            <h1 className="block sm:hidden text-base font-bold text-zinc-100 select-none ml-2">Ignorancia Artificial™</h1>
           </div>
         </header>
-        <main className="flex-1 flex items-center justify-center px-4 py-4">
+        <main className="flex-1 flex items-center justify-center px-4 py-4" role="main">
           {children}
         </main>
-        <footer className="w-full flex flex-col items-center gap-1 py-3 border-t border-zinc-800 bg-zinc-950/80 text-zinc-400 text-xs sm:text-sm px-4 mt-auto">
+        <footer className="w-full flex flex-col items-center gap-1 py-3 border-t border-zinc-700 bg-zinc-900/90 text-zinc-300 text-xs sm:text-sm px-4 mt-auto" role="contentinfo">
           <div className="w-full flex flex-col items-center mb-2">
-            <div className="text-center text-zinc-500 text-xs sm:text-sm max-w-xl mb-3 leading-snug">
-              La parodia de ChatGPT que responde mal, confunde y no sabe nada… pero con actitud. 🤡
+            <div className="text-center text-zinc-400 text-xs sm:text-sm max-w-xl mb-3 leading-snug">
+              La parodia de ChatGPT que responde mal, confunde y no sabe nada… pero con actitud. <span role="img" aria-label="Clown face">🤡</span>
             </div>
-            <div className="text-center text-zinc-400 text-xs sm:text-sm mb-2">
-              BozoGPT - Desarrollado por <a href="https://www.artmichel.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-zinc-200 transition-all">Art Michel</a>
+            <div className="text-center text-zinc-300 text-xs sm:text-sm mb-2">
+              BozoGPT - Desarrollado por <a href="https://www.artmichel.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-zinc-100 transition-all">Art Michel</a>
             </div>
           </div>
           <div className="flex flex-row items-center gap-3">
-            <a href="https://github.com/artmichel-dev" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline underline-offset-4 transition-all">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.338 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.847-2.337 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .268.18.579.688.481C19.138 20.2 22 16.448 22 12.021 22 6.484 17.523 2 12 2z"/></svg>
+            <a href="https://github.com/artmichel-dev" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline underline-offset-4 transition-all" aria-label="Visitar perfil de GitHub de Art Michel">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.338 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.847-2.337 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .268.18.579.688.481C19.138 20.2 22 16.448 22 12.021 22 6.484 17.523 2 12 2z"/></svg>
               <span className="hidden sm:inline">@artmichel-dev</span>
             </a>
             <a href="https://x.com/artmichel_eth" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline underline-offset-4 transition-all">
