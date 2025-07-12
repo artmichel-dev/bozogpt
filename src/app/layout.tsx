@@ -74,7 +74,7 @@ export default function RootLayout({
         <meta name="google-adsense-account" content="ca-pub-6477883622948797" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-[100dvh] flex flex-col overflow-hidden`}
       >
         <header className="w-full border-b border-zinc-700 py-2 flex items-center bg-zinc-900/50 z-10" role="banner">
           <div className="flex items-center gap-2 w-full">
@@ -83,7 +83,7 @@ export default function RootLayout({
             <h1 className="block sm:hidden text-base font-bold text-zinc-100 select-none ml-2">Ignorancia Artificial™</h1>
           </div>
         </header>
-        <main className="flex-1 flex items-center justify-center px-4 py-4" role="main">
+        <main className="flex-1 min-h-0 h-full flex items-center justify-center px-4 py-4 overflow-hidden" role="main">
           {children}
         </main>
         <footer className="w-full flex flex-col items-center gap-1 py-3 border-t border-zinc-700 bg-zinc-900/90 text-zinc-300 text-xs sm:text-sm px-4 mt-auto" role="contentinfo">
