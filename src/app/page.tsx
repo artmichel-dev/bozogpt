@@ -124,10 +124,10 @@ export default function Home() {
             </div>
             {/* Área de mensajes: crecen hacia arriba, scrollable */}
             <div
-              className="flex-1 flex flex-col justify-end overflow-y-auto min-h-0 relative"
+              className="flex-1 flex flex-col justify-end overflow-y-auto min-h-0 relative chat-area-mobile"
               aria-label="Historial del chat"
-            ref={chatRef}
-          >
+              ref={chatRef}
+            >
               {/* Fade/sombra arriba, ahora sí como gradiente real */}
               <div className="pointer-events-none absolute top-0 left-0 w-full z-10"
                    style={{background: 'linear-gradient(to bottom, rgb(24,24,27) 10%, rgba(24,24,27,0))'}} />
