@@ -33,6 +33,9 @@ export async function POST(req: NextRequest) {
       console.error("Missing OpenAI API key");
       return NextResponse.json({ error: "Falta la API Key" }, { status: 500 });
     }
+    
+    // Log para debugging (sin mostrar la clave completa)
+    console.log("API Key present:", apiKey ? `sk-...${apiKey.slice(-4)}` : "NOT FOUND");
 
     // Mensaje de sistema para forzar el estilo BozoGPT
     const systemPrompt =
@@ -64,7 +67,18 @@ export async function POST(req: NextRequest) {
     if (!response.ok) {
       const errorText = await response.text();
       console.error("OpenAI API error:", response.status, errorText);
-      return NextResponse.json({ error: `Error de OpenAI: ${response.status}` }, { status: 500 });
+      
+      // Proporcionar más información sobre el error
+      let errorMessage = `Error de OpenAI: ${response.status}`;
+      if (response.status === 401) {
+        errorMessage = "Error de autenticación: Verifica que la API key sea válida";
+      } else if (response.status === 429) {
+        errorMessage = "Límite de uso excedido: Intenta más tarde";
+      } else if (response.status === 500) {
+        errorMessage = "Error interno de OpenAI: Intenta más tarde";
+      }
+      
+      return NextResponse.json({ error: errorMessage }, { status: 500 });
     }
 
     const data = await response.json();
