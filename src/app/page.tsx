@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { ChatMessage } from "./components/ChatMessage";
 import { ChatInput } from "./components/ChatInput";
 import { LoadingMessage } from "./components/LoadingMessage";
@@ -93,7 +94,7 @@ export default function Home() {
             {/* Footer clásico, solo en bienvenida */}
             <div className="fixed bottom-0 left-0 w-full z-40 bg-zinc-900 border-t border-zinc-800 flex flex-row items-center justify-center gap-2 px-4 py-2 text-zinc-300 text-xs sm:text-sm">
               <div className="flex items-center gap-1 mr-1">
-                <img 
+                <Image 
                   src="/bozogpt-icon.svg" 
                   alt="BozoGPT" 
                   width="16" 
@@ -153,7 +154,7 @@ export default function Home() {
               {/* Footer aquí, solo en modo conversación */}
               <div className="w-full flex flex-row items-center justify-center gap-2 my-2 text-zinc-300 text-xs sm:text-sm">
                 <div className="flex items-center gap-1 mr-1">
-                  <img 
+                  <Image 
                     src="/bozogpt-icon.svg" 
                     alt="BozoGPT" 
                     width="16" 

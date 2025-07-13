@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { ChatInput } from './ChatInput';
 
 interface WelcomeMessageProps {
@@ -15,7 +16,7 @@ export function WelcomeMessage({ onSend, input, onChange, loading, inputRef }: W
       <div className="flex flex-col items-center justify-center w-full max-w-xl mx-auto">
         <div className="text-center mb-8 animate-fade-in">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <img 
+            <Image 
               src="/bozogpt-icon.svg" 
               alt="BozoGPT" 
               width="48" 

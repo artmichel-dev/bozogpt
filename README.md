@@ -76,7 +76,7 @@ npm install
 Create a file called `.env.local` in the root folder:
 
 ```
-OPENAI_API_KEY=sk-...
+OPENAI_API_KEY=your-api-key-here
 ```
 
 > **Never share or commit your API key!**

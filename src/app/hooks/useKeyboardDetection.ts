@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 export function useKeyboardDetection() {
   const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
-  const [initialViewportHeight, setInitialViewportHeight] = useState(0);
+  const [, setInitialViewportHeight] = useState(0);
 
   useEffect(() => {
     // Only run on client side
