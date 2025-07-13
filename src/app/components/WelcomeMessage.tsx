@@ -7,7 +7,7 @@ interface WelcomeMessageProps {
   input: string;
   onChange: (value: string) => void;
   loading: boolean;
-  inputRef: React.RefObject<HTMLInputElement | null>;
+  inputRef: React.RefObject<HTMLInputElement>;
 }
 
 export function WelcomeMessage({ onSend, input, onChange, loading, inputRef }: WelcomeMessageProps) {
