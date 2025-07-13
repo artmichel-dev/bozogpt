@@ -118,7 +118,7 @@ export function useKeyboardDetection(inputRef?: React.RefObject<HTMLInputElement
         '0px'
       );
     };
-  }, []);
+  }, [inputRef]);
 
   return { isKeyboardOpen };
 } 
