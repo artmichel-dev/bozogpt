@@ -14,14 +14,19 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "BozoGPT - Ignorancia Artificial",
-  description: "La primera IA entrenada con educación pública y televisión mexicana",
+  description: "La primera IA entrenada con educación pública y televisión mexicana.",
   metadataBase: new URL('https://bozogpt.com'),
   alternates: {
     canonical: '/',
   },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
   openGraph: {
     title: "BozoGPT - Ignorancia Artificial",
-    description: "La primera IA entrenada con educación pública y televisión mexicana",
+    description: "La primera IA entrenada con educación pública y televisión mexicana.",
     url: 'https://bozogpt.com',
     siteName: 'BozoGPT',
     images: [
@@ -38,7 +43,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "BozoGPT - Ignorancia Artificial",
-    description: "La primera IA entrenada con educación pública y televisión mexicana",
+    description: "La primera IA entrenada con educación pública y televisión mexicana.",
     images: ['/og-image.svg'],
     creator: '@artmichel_eth',
   },
@@ -76,7 +81,29 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen h-full flex flex-col bg-zinc-900 text-zinc-100`}
       >
-        {/* Main content area with container queries */}
+        {/* Fixed header with BozoGPT icon - no space in document flow */}
+        <div className="fixed top-0 left-0 z-30">
+          <div className="touch:px-1.5 px-2">
+            <div className="h-16 flex items-center">
+              <a 
+                aria-label="BozoGPT" 
+                className="text-zinc-100 no-draggable hover:bg-zinc-800 focus-visible:bg-zinc-800 touch:h-12 touch:w-12 flex h-12 w-12 items-center justify-center rounded-lg focus-visible:outline-0 disabled:opacity-50 transition-colors duration-200" 
+                href="/" 
+                data-discover="true"
+              >
+                <img 
+                  src="/bozogpt-icon.svg" 
+                  alt="BozoGPT" 
+                  width="40" 
+                  height="40" 
+                  className="text-zinc-100"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        {/* Main content area - no interference from fixed header */}
         <main className="flex-1 flex flex-col min-h-0 h-full overflow-hidden" role="main">
           {children}
         </main>

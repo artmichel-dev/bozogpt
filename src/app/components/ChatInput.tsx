@@ -41,15 +41,14 @@ export const ChatInput = forwardRef<HTMLInputElement, ChatInputProps>(
           />
           <button
             type="submit"
-            className={`flex items-center justify-center bg-transparent text-zinc-400 hover:text-zinc-100 font-bold py-0 px-4 rounded-3xl transition-all duration-200 disabled:opacity-60 text-base sm:text-lg border-none shadow-none touch-h-10 touch-w-10 ${
-              value.trim() && !loading ? 'text-zinc-300 hover:text-zinc-100' : 'text-zinc-500'
+            className={`flex items-center justify-center rounded-full transition-colors hover:opacity-70 disabled:opacity-60 disabled:hover:opacity-60 bg-white text-black disabled:bg-zinc-600 disabled:text-zinc-400 h-9 w-9 mr-2 ${
+              value.trim() && !loading ? 'hover:opacity-70' : 'opacity-60'
             }`}
             disabled={disabled || loading || !value.trim()}
             aria-label="Enviar mensaje"
           >
             {loading ? (
               <div className="flex items-center gap-1">
-                <span className="text-sm">🤡</span>
                 <div className="flex space-x-1">
                   <div className="w-1 h-1 bg-current rounded-full animate-pulse"></div>
                   <div className="w-1 h-1 bg-current rounded-full animate-pulse" style={{ animationDelay: '0.1s' }}></div>
@@ -58,14 +57,14 @@ export const ChatInput = forwardRef<HTMLInputElement, ChatInputProps>(
               </div>
             ) : (
               <svg 
+                width="20" 
+                height="20" 
+                viewBox="0 0 20 20" 
+                fill="currentColor" 
                 xmlns="http://www.w3.org/2000/svg" 
-                fill="none" 
-                viewBox="0 0 24 24" 
-                strokeWidth={2} 
-                stroke="currentColor" 
-                className="w-6 h-6 transition-transform duration-200 hover:scale-110"
+                className="icon"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.12 1.152.488V8.25c4.5 0 8.25 1.5 10.5 4.5-2.25 3-6 4.5-10.5 4.5v4.217c0 .609-.713.928-1.152.489L2.25 12z" />
+                <path d="M8.99992 16V6.41407L5.70696 9.70704C5.31643 10.0976 4.68342 10.0976 4.29289 9.70704C3.90237 9.31652 3.90237 8.6835 4.29289 8.29298L9.29289 3.29298L9.36907 3.22462C9.76184 2.90427 10.3408 2.92686 10.707 3.29298L15.707 8.29298L15.7753 8.36915C16.0957 8.76192 16.0731 9.34092 15.707 9.70704C15.3408 10.0732 14.7618 10.0958 14.3691 9.7754L14.2929 9.70704L10.9999 6.41407V16C10.9999 16.5523 10.5522 17 9.99992 17C9.44764 17 8.99992 16.5523 8.99992 16Z"></path>
               </svg>
             )}
           </button>

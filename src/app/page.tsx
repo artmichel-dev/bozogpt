@@ -78,7 +78,7 @@ export default function Home() {
     <div className="flex flex-col h-screen min-h-0 w-full overflow-hidden">
       {/* Header (si lo tienes en layout, puedes quitarlo aquí) */}
       <main className="flex-1 flex flex-col min-h-0">
-        {isEmpty ? (
+      {isEmpty ? (
           // Bienvenida: input centrado, footer clásico fijo abajo
           <>
             <div className="flex-1 flex flex-col items-center justify-center">
@@ -92,7 +92,16 @@ export default function Home() {
             </div>
             {/* Footer clásico, solo en bienvenida */}
             <div className="fixed bottom-0 left-0 w-full z-40 bg-zinc-900 border-t border-zinc-800 flex flex-row items-center justify-center gap-2 px-4 py-2 text-zinc-300 text-xs sm:text-sm">
-              <span className="font-bold text-base sm:text-sm mr-1">BozoGPT™</span>
+              <div className="flex items-center gap-1 mr-1">
+                <img 
+                  src="/bozogpt-icon.svg" 
+                  alt="BozoGPT" 
+                  width="16" 
+                  height="16" 
+                  className="text-zinc-100"
+                />
+                <span className="font-bold text-base sm:text-sm">BozoGPT™</span>
+              </div>
               <span className="font-normal">Desarrollado por</span>
               <a href="https://www.artmichel.com/" target="_blank" rel="noopener noreferrer" className="font-semibold text-zinc-100 hover:text-bozo-accent transition-all -ml-1 mr-2 align-middle">Art Michel</a>
               <a href="https://github.com/artmichel-dev" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-zinc-100 transition-all" aria-label="GitHub @artmichel-dev">
@@ -116,15 +125,15 @@ export default function Home() {
             <div
               className="flex-1 flex flex-col justify-end overflow-y-auto min-h-0 relative"
               aria-label="Historial del chat"
-              ref={chatRef}
-            >
+            ref={chatRef}
+          >
               {/* Fade/sombra arriba, ahora sí como gradiente real */}
               <div className="pointer-events-none absolute top-0 left-0 w-full z-10"
                    style={{background: 'linear-gradient(to bottom, rgb(24,24,27) 10%, rgba(24,24,27,0))'}} />
               <div className="w-full px-4 sm:px-6 py-4 space-y-4 min-h-[120px] max-w-2xl mx-auto flex flex-col">
-                {messages.map((msg, i) => (
-                  <ChatMessage key={i} role={msg.role} content={msg.content} />
-                ))}
+            {messages.map((msg, i) => (
+              <ChatMessage key={i} role={msg.role} content={msg.content} />
+            ))}
                 {loading && <LoadingMessage />}
                 {error && <ErrorMessage message={error} />}
               </div>
@@ -143,7 +152,16 @@ export default function Home() {
               </div>
               {/* Footer aquí, solo en modo conversación */}
               <div className="w-full flex flex-row items-center justify-center gap-2 my-2 text-zinc-300 text-xs sm:text-sm">
-                <span className="font-bold text-base sm:text-sm mr-1">BozoGPT™</span>
+                <div className="flex items-center gap-1 mr-1">
+                  <img 
+                    src="/bozogpt-icon.svg" 
+                    alt="BozoGPT" 
+                    width="16" 
+                    height="16" 
+                    className="text-zinc-100"
+                  />
+                  <span className="font-bold text-base sm:text-sm">BozoGPT™</span>
+                </div>
                 <span className="font-normal">Desarrollado por</span>
                 <a href="https://www.artmichel.com/" target="_blank" rel="noopener noreferrer" className="font-semibold text-zinc-100 hover:text-bozo-accent transition-all -ml-1 mr-2 align-middle">Art Michel</a>
                 <a href="https://github.com/artmichel-dev" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-zinc-100 transition-all" aria-label="GitHub @artmichel-dev">
@@ -159,7 +177,7 @@ export default function Home() {
             </div>
           </>
         )}
-      </main>
+        </main>
     </div>
   );
 }

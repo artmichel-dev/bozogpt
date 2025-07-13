@@ -14,9 +14,18 @@ export function WelcomeMessage({ onSend, input, onChange, loading, inputRef }: W
     <div className="welcome-screen px-4">
       <div className="flex flex-col items-center justify-center w-full max-w-xl mx-auto">
         <div className="text-center mb-8 animate-fade-in">
-          <h1 className="text-3xl sm:text-4xl font-bold text-zinc-100 select-none mb-4">
-            Ignorancia Artificial™
-          </h1>
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <img 
+              src="/bozogpt-icon.svg" 
+              alt="BozoGPT" 
+              width="48" 
+              height="48" 
+              className="text-zinc-100"
+            />
+            <h1 className="text-3xl sm:text-4xl font-bold text-zinc-100 select-none">
+              Ignorancia Artificial™
+            </h1>
+          </div>
           <p className="text-zinc-400 text-base sm:text-lg max-w-md">
             La primera IA entrenada con educación pública y televisión mexicana
           </p>
