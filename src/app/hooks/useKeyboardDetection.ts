@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export function useKeyboardDetection(inputRef?: React.RefObject<HTMLInputElement>) {
+export function useKeyboardDetection(inputRef?: React.RefObject<HTMLInputElement | null>) {
   const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
   const [, setInitialViewportHeight] = useState(0);
 
