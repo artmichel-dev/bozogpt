@@ -2,18 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Dynamic viewport variables */
+  --screen-optical-compact-offset-amount: 0px;
+  --thread-content-margin: var(--spacing-4, 1rem);
+  --thread-content-max-width: 32rem;
+  --sidebar-rail-width: 260px;
+  --header-height: 60px;
+  --footer-height: 120px;
+  
+  /* Spacing system */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  
+  /* Shadow system */
+  --sharp-edge-top-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --sharp-edge-bottom-shadow: 0 -1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
 body {
   @apply bg-zinc-900 text-zinc-100 min-h-screen;
   font-family: var(--font-geist-sans, sans-serif);
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height */
 }
 
+/* Container queries setup */
+@container/thread {
+  /* Thread-specific styles */
+}
+
+/* Scroll indicators and shadows */
+.content-fade {
+  position: relative;
+  isolation: isolate;
+}
+
+.vertical-scroll-fade-mask {
+  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+/* Smooth transitions */
+.motion-safe-transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.motion-safe-duration-150 {
+  transition-duration: 150ms;
+}
+
+.motion-safe-steps {
+  transition-timing-function: steps(1, start);
+}
+
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
-  background: #222;
+  background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #6b7280; /* gris neutro, tailwind gray-500 */
+  background: #6b7280;
   border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
 }
 
 /* Branding: color acento para BozoGPT */
@@ -36,10 +103,102 @@ body {
   }
 }
 
-/* Mobile keyboard handling */
+/* Touch-friendly buttons */
+.touch-h-10 {
+  height: 2.5rem;
+}
+
+.touch-w-10 {
+  width: 2.5rem;
+}
+
+/* Container query breakpoints */
+@container/thread (min-width: 34rem) {
+  :root {
+    --thread-content-max-width: 40rem;
+  }
+}
+
+@container/thread (min-width: 64rem) {
+  :root {
+    --thread-content-max-width: 48rem;
+  }
+}
+
+@container/thread (min-width: 84rem) {
+  :root {
+    --thread-content-max-width: 56rem;
+  }
+}
+
+/* Responsive spacing */
+@container/thread (min-width: 37rem) {
+  :root {
+    --thread-content-margin: var(--spacing-6);
+  }
+}
+
+/* Keyboard handling for mobile */
 @media screen and (max-width: 768px) {
   body {
     height: 100vh;
-    height: 100dvh; /* Dynamic viewport height */
+    height: 100dvh;
   }
+  
+  /* Adjust offset when keyboard appears */
+  body.keyboard-open {
+    --screen-optical-compact-offset-amount: 25vh;
+  }
+}
+
+/* Perfect centering for welcome screen */
+.welcome-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+/* Adjust centering when keyboard is open */
+body.keyboard-open .welcome-screen {
+  align-items: flex-start;
+  padding-top: 10vh;
+}
+
+/* Focus styles for accessibility */
+.focus-visible-outline:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Loading states */
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
 }
