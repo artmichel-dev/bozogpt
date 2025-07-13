@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export function useKeyboardDetection() {
+export function useKeyboardDetection(inputRef?: React.RefObject<HTMLInputElement>) {
   const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
   const [, setInitialViewportHeight] = useState(0);
 
@@ -11,6 +11,14 @@ export function useKeyboardDetection() {
     // Set initial viewport height on mount
     const height = window.innerHeight;
     setInitialViewportHeight(height);
+
+    const scrollToInput = () => {
+      if (inputRef && inputRef.current) {
+        setTimeout(() => {
+          inputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 350);
+      }
+    };
 
     const handleResize = () => {
       const currentHeight = window.innerHeight;
@@ -25,6 +33,7 @@ export function useKeyboardDetection() {
           '--screen-optical-compact-offset-amount', 
           `${heightDifference * 0.3}px`
         );
+        scrollToInput();
       } else {
         setIsKeyboardOpen(false);
         document.body.classList.remove('keyboard-open');
@@ -53,6 +62,7 @@ export function useKeyboardDetection() {
               '--screen-optical-compact-offset-amount', 
               `${heightDifference * 0.3}px`
             );
+            scrollToInput();
           }
         }, 300);
       }

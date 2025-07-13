@@ -202,3 +202,23 @@ body.keyboard-open .welcome-screen {
 .animate-fade-in {
   animation: fadeIn 0.3s ease-out;
 }
+
+/* --- NUEVO: Footer/input fijo sobre teclado en móviles --- */
+@media screen and (max-width: 768px) {
+  .chat-footer-mobile {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    background: #18181b;
+    border-top: 1px solid #27272a;
+    box-shadow: 0 -2px 8px 0 rgb(0 0 0 / 0.10);
+    padding-bottom: max(env(safe-area-inset-bottom), 0px);
+    transition: transform 0.2s;
+  }
+  body.keyboard-open .chat-footer-mobile {
+    /* Subir el footer cuando el teclado está abierto */
+    transform: translateY(-25vh);
+  }
+}

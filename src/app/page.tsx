@@ -21,7 +21,7 @@ export default function Home() {
   const chatRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [lang, setLang] = useState("es");
-  useKeyboardDetection();
+  useKeyboardDetection(inputRef);
 
   useEffect(() => {
     setLang(navigator.language.split("-")[0] || "es");
@@ -140,7 +140,7 @@ export default function Home() {
               </div>
             </div>
             {/* Input y footer juntos, siempre al fondo, sin sticky ni absolute */}
-            <div className="shrink-0 flex flex-col w-full max-w-2xl mx-auto">
+            <div className="shrink-0 flex flex-col w-full max-w-2xl mx-auto chat-footer-mobile">
               <div className="w-full flex justify-center items-center gap-0 p-4 bg-transparent">
                 <ChatInput
                   ref={inputRef}
