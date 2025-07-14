@@ -85,6 +85,8 @@ export default function RootLayout({
         {/* Google AdSense */}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6477883622948797" crossOrigin="anonymous"></script>
         <meta name="google-adsense-account" content="ca-pub-6477883622948797" />
+        {/* Facebook App ID para extracción de datos */}
+        <meta property="fb:app_id" content="123456789012345" />
         {/* Favicon para máxima compatibilidad */}
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
