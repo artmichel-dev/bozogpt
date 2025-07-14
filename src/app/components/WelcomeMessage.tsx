@@ -12,7 +12,7 @@ interface WelcomeMessageProps {
 
 export function WelcomeMessage({ onSend, input, onChange, loading, inputRef }: WelcomeMessageProps) {
   return (
-    <div className="welcome-screen px-4">
+    <div className="px-4">
       <div className="flex flex-col items-center justify-center w-full max-w-xl mx-auto">
         <div className="text-center mb-8 animate-fade-in">
           <div className="flex items-center justify-center gap-3 mb-4">

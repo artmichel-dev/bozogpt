@@ -6,7 +6,6 @@ import { ChatInput } from "./components/ChatInput";
 import { LoadingMessage } from "./components/LoadingMessage";
 import { ErrorMessage } from "./components/ErrorMessage";
 import { WelcomeMessage } from "./components/WelcomeMessage";
-import { useKeyboardDetection } from "./hooks/useKeyboardDetection";
 
 interface Message {
   role: "user" | "assistant";
@@ -21,7 +20,6 @@ export default function Home() {
   const chatRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [lang, setLang] = useState("es");
-  useKeyboardDetection(inputRef);
 
   useEffect(() => {
     setLang(navigator.language.split("-")[0] || "es");
@@ -123,11 +121,11 @@ export default function Home() {
               <div className="absolute top-0 left-0 w-full h-10" style={{background: 'linear-gradient(to bottom, rgba(24,24,27,1) 70%, rgba(24,24,27,0))'}} />
             </div>
             {/* Área de mensajes: crecen hacia arriba, scrollable */}
-            <div
-              className="flex-1 flex flex-col justify-end overflow-y-auto min-h-0 relative chat-area-mobile"
+                        <div
+              className="flex-1 flex flex-col justify-end overflow-y-auto min-h-0 relative"
               aria-label="Historial del chat"
-              ref={chatRef}
-            >
+            ref={chatRef}
+          >
               {/* Fade/sombra arriba, ahora sí como gradiente real */}
               <div className="pointer-events-none absolute top-0 left-0 w-full z-10"
                    style={{background: 'linear-gradient(to bottom, rgb(24,24,27) 10%, rgba(24,24,27,0))'}} />
@@ -140,7 +138,7 @@ export default function Home() {
               </div>
             </div>
             {/* Input y footer juntos, siempre al fondo, sin sticky ni absolute */}
-            <div className="shrink-0 flex flex-col w-full max-w-2xl mx-auto chat-footer-mobile">
+            <div className="shrink-0 flex flex-col w-full max-w-2xl mx-auto">
               <div className="w-full flex justify-center items-center gap-0 p-4 bg-transparent">
                 <ChatInput
                   ref={inputRef}

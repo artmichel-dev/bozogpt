@@ -34,13 +34,9 @@ body {
   @apply bg-zinc-900 text-zinc-100 min-h-screen;
   font-family: var(--font-geist-sans, sans-serif);
   height: 100vh;
-  height: 100dvh; /* Dynamic viewport height */
 }
 
 /* Container queries setup */
-@container/thread {
-  /* Thread-specific styles */
-}
 
 /* Scroll indicators and shadows */
 .content-fade {
@@ -112,61 +108,6 @@ body {
   width: 2.5rem;
 }
 
-/* Container query breakpoints */
-@container/thread (min-width: 34rem) {
-  :root {
-    --thread-content-max-width: 40rem;
-  }
-}
-
-@container/thread (min-width: 64rem) {
-  :root {
-    --thread-content-max-width: 48rem;
-  }
-}
-
-@container/thread (min-width: 84rem) {
-  :root {
-    --thread-content-max-width: 56rem;
-  }
-}
-
-/* Responsive spacing */
-@container/thread (min-width: 37rem) {
-  :root {
-    --thread-content-margin: var(--spacing-6);
-  }
-}
-
-/* Keyboard handling for mobile */
-@media screen and (max-width: 768px) {
-  body {
-    height: 100vh;
-    height: 100dvh;
-  }
-  
-  /* Adjust offset when keyboard appears */
-  body.keyboard-open {
-    --screen-optical-compact-offset-amount: 25vh;
-  }
-}
-
-/* Perfect centering for welcome screen */
-.welcome-screen {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-}
-
-/* Adjust centering when keyboard is open */
-body.keyboard-open .welcome-screen {
-  align-items: flex-start;
-  padding-top: 10vh;
-}
-
 /* Focus styles for accessibility */
 .focus-visible-outline:focus-visible {
   outline: 2px solid #3b82f6;
@@ -201,65 +142,4 @@ body.keyboard-open .welcome-screen {
 
 .animate-fade-in {
   animation: fadeIn 0.3s ease-out;
-}
-
-/* --- NUEVO: Footer/input fijo sobre teclado en móviles --- */
-@media screen and (max-width: 768px) {
-  .chat-footer-mobile {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 50;
-    background: #18181b;
-    border-top: 1px solid #27272a;
-    box-shadow: 0 -2px 8px 0 rgb(0 0 0 / 0.10);
-    padding-bottom: max(env(safe-area-inset-bottom), 0px);
-    transition: transform 0.2s;
-  }
-  body.keyboard-open .chat-footer-mobile {
-    /* Subir el footer cuando el teclado está abierto */
-    transform: translateY(-25vh);
-  }
-}
-
-/* --- Mejoras para bienvenida y chat en móviles con teclado abierto --- */
-@media screen and (max-width: 768px) {
-  body.keyboard-open .welcome-screen {
-    align-items: flex-start;
-    padding-top: 10vh;
-    justify-content: flex-start;
-    min-height: 60vh;
-  }
-  .welcome-screen {
-    min-height: 100dvh;
-    box-sizing: border-box;
-  }
-  .chat-footer-mobile {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 50;
-    background: #18181b;
-    border-top: 1px solid #27272a;
-    box-shadow: 0 -2px 8px 0 rgb(0 0 0 / 0.10);
-    padding-bottom: max(env(safe-area-inset-bottom), 0px);
-    transition: transform 0.2s;
-  }
-  body.keyboard-open .chat-footer-mobile {
-    transform: translateY(-25vh);
-  }
-  .chat-area-mobile {
-    flex: 1 1 auto;
-    overflow-y: auto;
-    min-height: 0;
-    max-height: calc(100dvh - 110px); /* Altura del input/footer aprox */
-    padding-bottom: 110px; /* Espacio para el input/footer */
-    box-sizing: border-box;
-  }
-  body.keyboard-open .chat-area-mobile {
-    max-height: calc(75dvh - 10px);
-    padding-bottom: 30vh; /* Espacio extra para el teclado */
-  }
 }
