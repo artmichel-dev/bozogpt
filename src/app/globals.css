@@ -53,8 +53,8 @@ html.viewport-reduced {
 body {
   @apply bg-zinc-900 text-zinc-100;
   font-family: var(--font-geist-sans, sans-serif);
-  height: 100vh; /* Valor por defecto, será actualizado por JS */
-  min-height: 100vh; /* Valor por defecto, será actualizado por JS */
+  height: var(--viewport-height);
+  min-height: var(--viewport-height);
   width: 100%;
   margin: 0;
   padding: 0;

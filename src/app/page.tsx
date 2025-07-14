@@ -102,7 +102,7 @@ export default function Home() {
         </ClientOnly>
         
         {/* Header (si lo tienes en layout, puedes quitarlo aquí) */}
-        <main className="flex-1 flex flex-col min-h-0 viewport-content">
+        <main className="flex flex-col h-full min-h-0 viewport-content">
         {isEmpty ? (
             // Bienvenida: input centrado, footer clásico fijo abajo
             <>
