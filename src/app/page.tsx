@@ -95,18 +95,18 @@ export default function Home() {
       {/* Inicializador del viewport dinámico */}
       <ViewportInitializer />
       
-      <div className="flex flex-col min-h-viewport w-full overflow-hidden viewport-dynamic">
+      <div className="flex flex-col h-viewport w-full overflow-hidden viewport-dynamic">
         {/* Debug del viewport (solo en desarrollo) */}
         <ClientOnly>
           <ViewportDebug enabled={true} />
         </ClientOnly>
         
         {/* Header (si lo tienes en layout, puedes quitarlo aquí) */}
-        <main className="flex flex-col min-h-0 viewport-content">
+        <main className="flex flex-col h-viewport viewport-content">
         {isEmpty ? (
             // Bienvenida: input centrado, footer clásico fijo abajo
             <>
-              <div className="flex-1 flex flex-col items-center justify-center viewport-adaptive">
+              <div className="flex-1 flex flex-col items-center justify-center">
                 <WelcomeMessage
                   onSend={sendMessage}
                   input={input}
@@ -142,7 +142,7 @@ export default function Home() {
               </div>
               {/* Área de mensajes: crecen hacia arriba, scrollable */}
               <div
-                className="flex-1 flex flex-col justify-end overflow-y-auto min-h-0 relative viewport-adaptive"
+                className="flex-1 flex flex-col justify-end overflow-y-auto min-h-0 relative"
                 style={{ maxHeight: 'calc(var(--viewport-height) - 64px)' }}
                 aria-label="Historial del chat"
                 ref={chatRef}

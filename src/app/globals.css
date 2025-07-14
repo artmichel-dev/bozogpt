@@ -53,6 +53,7 @@ html.viewport-reduced {
 body {
   @apply bg-zinc-900 text-zinc-100;
   font-family: var(--font-geist-sans, sans-serif);
+  height: var(--viewport-height);
   min-height: var(--viewport-height);
   width: 100%;
   margin: 0;
@@ -61,20 +62,22 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  transition: min-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: min-height;
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1), min-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: height, min-height;
 }
 
 /* Clase para viewport dinámico */
 .viewport-dynamic {
+  height: var(--viewport-height);
   min-height: var(--viewport-height);
 }
 
 /* Contenido principal que se adapta al viewport */
 .viewport-content {
+  height: var(--viewport-height);
   min-height: var(--viewport-height);
-  transition: min-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: min-height;
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1), min-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: height, min-height;
 }
 
 /* Estados específicos cuando el teclado está abierto */
@@ -245,8 +248,8 @@ body {
 
 /* Utilidades específicas para viewport dinámico */
 .h-viewport {
+  height: var(--viewport-height);
   min-height: var(--viewport-height);
-  height: auto;
 }
 
 .min-h-viewport {
@@ -261,19 +264,6 @@ body {
   width: var(--viewport-width);
 }
 
-/* Clases para elementos que deben adaptarse proporcionalmente */
-.viewport-scalable {
-  transform: scale(var(--scale-factor));
-  transform-origin: top left;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Prevención de layout shift */
-.viewport-stable {
-  contain: layout;
-  will-change: auto;
-}
-
 /* Optimizaciones para elementos que deben mantenerse visibles */
 .viewport-sticky {
   position: sticky;
@@ -285,10 +275,6 @@ body {
 .viewport-adaptive {
   position: relative;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.viewport-reduced .viewport-adaptive {
-  transform: translateY(calc(var(--initial-viewport-height) - var(--viewport-height)));
 }
 
 /* Utilidades para debugging del viewport */

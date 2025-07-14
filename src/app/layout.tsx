@@ -115,7 +115,7 @@ export default function RootLayout({
         </div>
         
         {/* Main content area - no interference from fixed header */}
-        <main className="flex flex-col min-h-0 overflow-hidden viewport-content" role="main">
+        <main className="flex flex-col h-viewport overflow-hidden viewport-content" role="main">
           {children}
         </main>
       </body>

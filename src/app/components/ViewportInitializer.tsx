@@ -26,6 +26,7 @@ export const ViewportInitializer = () => {
         // Actualizar altura del body
         document.body.style.height = viewportHeight + 'px';
         document.body.style.minHeight = viewportHeight + 'px';
+        document.body.style.maxHeight = viewportHeight + 'px';
         // Añadir/remover clase para estado del teclado
         if (isKeyboardOpen) {
           document.body.classList.add('viewport-reduced');
