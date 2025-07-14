@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 
 interface ViewportState {
   height: number;
@@ -10,6 +10,7 @@ interface ViewportState {
 
 export const useViewport = () => {
   const [isClient, setIsClient] = useState(false);
+  const initialHeightRef = useRef<number | null>(null);
   const [viewportState, setViewportState] = useState<ViewportState>({
     height: 1000,
     width: 1000,
@@ -24,7 +25,11 @@ export const useViewport = () => {
     const visualViewport = window.visualViewport;
     const viewportHeight = visualViewport ? visualViewport.height : window.innerHeight;
     const viewportWidth = visualViewport ? visualViewport.width : window.innerWidth;
-    const initialHeight = window.innerHeight;
+    // Solo tomar el initialHeight una vez
+    if (initialHeightRef.current === null) {
+      initialHeightRef.current = window.innerHeight;
+    }
+    const initialHeight = initialHeightRef.current;
     const isKeyboardOpen = viewportHeight < initialHeight * 0.8;
     const scaleFactor = viewportHeight / initialHeight;
 
