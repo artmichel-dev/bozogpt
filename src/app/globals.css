@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 :root {
+  /* Dynamic viewport variables - inicializadas por JavaScript */
+  --viewport-height: 100vh;
+  --viewport-width: 100vw;
+  --initial-viewport-height: 100vh;
+  --is-keyboard-open: 0;
+  --scale-factor: 1;
+  
   /* Dynamic viewport variables */
   --screen-optical-compact-offset-amount: 0px;
   --thread-content-margin: var(--spacing-4, 1rem);
@@ -30,10 +37,94 @@
   --sharp-edge-bottom-shadow: 0 -1px 2px 0 rgb(0 0 0 / 0.05);
 }
 
+/* Configuración base del viewport dinámico */
+html {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+html.viewport-reduced {
+  height: var(--viewport-height);
+  min-height: var(--viewport-height);
+}
+
 body {
-  @apply bg-zinc-900 text-zinc-100 min-h-screen;
+  @apply bg-zinc-900 text-zinc-100;
   font-family: var(--font-geist-sans, sans-serif);
-  height: 100vh;
+  height: 100vh; /* Valor por defecto, será actualizado por JS */
+  min-height: 100vh; /* Valor por defecto, será actualizado por JS */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1), min-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: height, min-height;
+}
+
+/* Clase para viewport dinámico */
+.viewport-dynamic {
+  height: var(--viewport-height);
+  min-height: var(--viewport-height);
+  max-height: var(--viewport-height);
+}
+
+/* Contenido principal que se adapta al viewport */
+.viewport-content {
+  height: var(--viewport-height);
+  min-height: var(--viewport-height);
+  max-height: var(--viewport-height);
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1), min-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: height, min-height, max-height;
+}
+
+/* Estados específicos cuando el teclado está abierto */
+.viewport-reduced .viewport-content {
+  height: var(--viewport-height);
+  min-height: var(--viewport-height);
+  max-height: var(--viewport-height);
+}
+
+/* Transiciones suaves para elementos principales */
+.viewport-dynamic * {
+  transition: height 0.3s ease, max-height 0.3s ease, min-height 0.3s ease;
+}
+
+/* Optimizaciones específicas para iOS */
+@supports (-webkit-touch-callout: none) {
+  body {
+    min-height: -webkit-fill-available;
+    height: -webkit-fill-available;
+  }
+  
+  .viewport-dynamic {
+    min-height: -webkit-fill-available;
+    height: -webkit-fill-available;
+  }
+  
+  .viewport-content {
+    min-height: -webkit-fill-available;
+    height: -webkit-fill-available;
+  }
+  
+  /* Manejo de safe area para dispositivos con notch */
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* Optimizaciones específicas para Android */
+@supports not (-webkit-touch-callout: none) {
+  body {
+    touch-action: manipulation;
+  }
 }
 
 /* Container queries setup */
@@ -97,6 +188,19 @@ body {
   input[type="text"] {
     font-size: 16px;
   }
+  
+  /* Asegurar que los inputs no causen zoom */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="url"],
+  textarea,
+  select {
+    font-size: 16px !important;
+    transform-origin: left top;
+  }
 }
 
 /* Touch-friendly buttons */
@@ -142,4 +246,94 @@ body {
 
 .animate-fade-in {
   animation: fadeIn 0.3s ease-out;
+}
+
+/* Utilidades específicas para viewport dinámico */
+.h-viewport {
+  height: var(--viewport-height);
+}
+
+.min-h-viewport {
+  min-height: var(--viewport-height);
+}
+
+.max-h-viewport {
+  max-height: var(--viewport-height);
+}
+
+.w-viewport {
+  width: var(--viewport-width);
+}
+
+/* Clases para elementos que deben adaptarse proporcionalmente */
+.viewport-scalable {
+  transform: scale(var(--scale-factor));
+  transform-origin: top left;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Prevención de layout shift */
+.viewport-stable {
+  contain: layout;
+  will-change: auto;
+}
+
+/* Optimizaciones para elementos que deben mantenerse visibles */
+.viewport-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Manejo de elementos que deben reposicionarse cuando el teclado aparece */
+.viewport-adaptive {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.viewport-reduced .viewport-adaptive {
+  transform: translateY(calc(var(--initial-viewport-height) - var(--viewport-height)));
+}
+
+/* Utilidades para debugging del viewport */
+.viewport-debug {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  font-size: 12px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Optimizaciones para performance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Asegurar que el contenido principal use todo el espacio disponible */
+#__next {
+  height: 100%;
+  min-height: 100%;
+}
+
+/* Manejo de overscroll para evitar efectos no deseados */
+body {
+  overscroll-behavior: contain;
+}
+
+/* Optimizaciones para WebKit */
+@supports (-webkit-appearance: none) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }

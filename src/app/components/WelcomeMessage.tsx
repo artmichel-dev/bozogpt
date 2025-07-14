@@ -19,12 +19,12 @@ export function WelcomeMessage({ onSend, input, onChange, loading, inputRef }: W
             <Image 
               src="/bozogpt-icon.svg" 
               alt="BozoGPT" 
-              width="48" 
-              height="48" 
+              width="40" 
+              height="40" 
               className="text-zinc-100"
             />
             <h1 className="text-3xl sm:text-4xl font-bold text-zinc-100 select-none">
-              Ignorancia Artificial™
+              Ignorancia Artificial
             </h1>
           </div>
           <p className="text-zinc-400 text-base sm:text-lg max-w-md">

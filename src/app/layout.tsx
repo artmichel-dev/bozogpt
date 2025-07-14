@@ -26,6 +26,7 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
     apple: '/favicon.ico',
   },
+  manifest: '/manifest.json',
   openGraph: {
     title: "BozoGPT - Ignorancia Artificial",
     description: "La primera IA entrenada con educación pública y televisión mexicana.",
@@ -76,12 +77,20 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
+        {/* Meta viewport para viewport dinámico */}
+        <meta 
+          name="viewport" 
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content" 
+        />
         {/* Google AdSense */}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6477883622948797" crossOrigin="anonymous"></script>
         <meta name="google-adsense-account" content="ca-pub-6477883622948797" />
+        {/* Favicon para máxima compatibilidad */}
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen h-full flex flex-col bg-zinc-900 text-zinc-100`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-900 text-zinc-100 viewport-dynamic`}
       >
         {/* Fixed header with BozoGPT icon - no space in document flow */}
         <div className="fixed top-0 left-0 z-30">
@@ -106,7 +115,7 @@ export default function RootLayout({
         </div>
         
         {/* Main content area - no interference from fixed header */}
-        <main className="flex-1 flex flex-col min-h-0 h-full overflow-hidden" role="main">
+        <main className="flex-1 flex flex-col min-h-0 overflow-hidden viewport-content" role="main">
           {children}
         </main>
       </body>
