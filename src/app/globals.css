@@ -53,7 +53,6 @@ html.viewport-reduced {
 body {
   @apply bg-zinc-900 text-zinc-100;
   font-family: var(--font-geist-sans, sans-serif);
-  height: var(--viewport-height);
   min-height: var(--viewport-height);
   width: 100%;
   margin: 0;
@@ -62,24 +61,20 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1), min-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: height, min-height;
+  transition: min-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: min-height;
 }
 
 /* Clase para viewport dinámico */
 .viewport-dynamic {
-  height: var(--viewport-height);
   min-height: var(--viewport-height);
-  max-height: var(--viewport-height);
 }
 
 /* Contenido principal que se adapta al viewport */
 .viewport-content {
-  height: var(--viewport-height);
   min-height: var(--viewport-height);
-  max-height: var(--viewport-height);
-  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1), min-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: height, min-height, max-height;
+  transition: min-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: min-height;
 }
 
 /* Estados específicos cuando el teclado está abierto */
@@ -250,7 +245,8 @@ body {
 
 /* Utilidades específicas para viewport dinámico */
 .h-viewport {
-  height: var(--viewport-height);
+  min-height: var(--viewport-height);
+  height: auto;
 }
 
 .min-h-viewport {
