@@ -44,7 +44,7 @@ export function WelcomeMessage({ onSend, input, onChange, loading, inputRef }: W
         </div>
         
         <div className="mt-6 text-center text-zinc-500 text-sm animate-fade-in" style={{ animationDelay: '0.4s' }}>
-          <p>La parodia de ChatGPT que responde todo mal, ignora todo los tema per te divertirá.</p>
+          <p>La parodia de ChatGPT que responde todo mal, ignora todos los temas, pero te divertirá.</p>
         </div>
       </div>
     </div>
