@@ -6,7 +6,7 @@ import { ChatInput } from "./components/ChatInput";
 import { LoadingMessage } from "./components/LoadingMessage";
 import { ErrorMessage } from "./components/ErrorMessage";
 import { WelcomeMessage } from "./components/WelcomeMessage";
-import { ViewportDebug } from "./components/ViewportDebug";
+
 import { ClientOnly } from "./components/ClientOnly";
 import { ViewportInitializer } from "./components/ViewportInitializer";
 import { useViewport } from "./hooks/useViewport";
@@ -96,10 +96,7 @@ export default function Home() {
       <ViewportInitializer />
       
       <div className="flex flex-col h-viewport w-full overflow-hidden viewport-dynamic">
-        {/* Debug del viewport (solo en desarrollo) */}
-        <ClientOnly>
-          <ViewportDebug enabled={true} />
-        </ClientOnly>
+
         
         {/* Header (si lo tienes en layout, puedes quitarlo aquí) */}
         <main className="flex flex-col h-viewport viewport-content">
