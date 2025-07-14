@@ -28,6 +28,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Formato de mensajes inválido" }, { status: 400 });
     }
 
+    console.log("DEBUG ENV:", process.env.OPENAI_API_KEY ? "KEY PRESENT" : "KEY MISSING");
+    console.log("DEBUG ENV LENGTH:", process.env.OPENAI_API_KEY ? process.env.OPENAI_API_KEY.length : 0);
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) {
       console.error("Missing OpenAI API key");
