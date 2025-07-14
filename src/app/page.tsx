@@ -7,7 +7,7 @@ import { LoadingMessage } from "./components/LoadingMessage";
 import { ErrorMessage } from "./components/ErrorMessage";
 import { WelcomeMessage } from "./components/WelcomeMessage";
 
-import { ClientOnly } from "./components/ClientOnly";
+
 import { ViewportInitializer } from "./components/ViewportInitializer";
 import { useViewport } from "./hooks/useViewport";
 
