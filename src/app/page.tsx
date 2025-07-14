@@ -98,7 +98,7 @@ export default function Home() {
       <div className="flex flex-col h-viewport min-h-viewport max-h-viewport w-full overflow-hidden viewport-dynamic">
         {/* Debug del viewport (solo en desarrollo) */}
         <ClientOnly>
-          <ViewportDebug enabled={process.env.NODE_ENV === 'development'} />
+          <ViewportDebug enabled={true} />
         </ClientOnly>
         
         {/* Header (si lo tienes en layout, puedes quitarlo aquí) */}
