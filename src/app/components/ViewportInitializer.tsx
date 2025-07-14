@@ -12,8 +12,9 @@ export const ViewportInitializer = () => {
         const visualViewport = window.visualViewport;
         const viewportHeight = visualViewport ? visualViewport.height : window.innerHeight;
         const viewportWidth = visualViewport ? visualViewport.width : window.innerWidth;
+        // Solo guardar una vez, y debe ser el primer viewportHeight real
         if (initialHeight === null) {
-          initialHeight = window.innerHeight;
+          initialHeight = viewportHeight;
         }
         const isKeyboardOpen = viewportHeight < initialHeight * 0.8;
         const scaleFactor = viewportHeight / initialHeight;
