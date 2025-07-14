@@ -10,7 +10,6 @@ import { ViewportDebug } from "./components/ViewportDebug";
 import { ClientOnly } from "./components/ClientOnly";
 import { ViewportInitializer } from "./components/ViewportInitializer";
 import { useViewport } from "./hooks/useViewport";
-import "./test-viewport"; // Importar script de prueba
 
 interface Message {
   role: "user" | "assistant";
