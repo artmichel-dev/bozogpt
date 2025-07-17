@@ -10,6 +10,7 @@ import { WelcomeMessage } from "./components/WelcomeMessage";
 
 import { ViewportInitializer } from "./components/ViewportInitializer";
 import { useViewport } from "./hooks/useViewport";
+import { OperaViewportJSFix } from './components/OperaViewportJSFix';
 
 interface Message {
   role: "user" | "assistant";
@@ -92,6 +93,7 @@ export default function Home() {
 
   return (
     <>
+      <OperaViewportJSFix />
       {/* Inicializador del viewport dinámico */}
       <ViewportInitializer />
       

@@ -108,6 +108,22 @@ npm start
 
 ---
 
+## ⚠️ Known Issues
+
+### Opera Mobile Browser
+**Problem**: When the virtual keyboard appears in Opera mobile, the content may be pushed up and become partially hidden, leaving empty space at the bottom of the screen.
+
+**Status**: This is a known browser limitation/bug in Opera mobile. The app includes Opera-specific fixes (`OperaViewportJSFix.tsx`) but the issue may persist due to Opera's viewport handling.
+
+**Workaround**: For the best mobile experience, we recommend using Chrome, Firefox, or Edge on mobile devices.
+
+**Technical Details**: 
+- Opera mobile has inconsistent behavior with `window.innerHeight` and viewport units when the virtual keyboard is active
+- The app attempts to fix this with JavaScript viewport adjustments, but Opera may ignore these changes
+- This is not a bug in the application code, but a limitation of the Opera mobile browser
+
+---
+
 ## ✨ Credits
 
 - **Developed by:** [Art Michel](https://www.artmichel.com/)
@@ -123,7 +139,7 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
 
 ---
 
-## �� Example answers
+## 🤡 Example answers
 
 - "Hmm… I have absolutely no idea, but it sounds complicated."
 - "I was trained on soap operas and memes, so I have no clue."
